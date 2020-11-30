@@ -1,5 +1,5 @@
 #language:pt
-Funcionalidade: Testes no site de compras
+Funcionalidade: Buscas e Validacoes Site de Compras
 	@Teste01
     Cenário: CT0001 Pesquisar produto existente
 	    Dado que eu acesse a página home do site
@@ -18,17 +18,18 @@ Funcionalidade: Testes no site de compras
     Cenário: CT0003 Selecionar Categoria
 	    Dado que eu acesse a página home do site
 	    E passar o mouse por cima da categoria "Women" no menu principal superior de categorias
-	    Quando clicar na sub categoria "Summer Dresses"
+	    Quando clicar na sub categoria "Summer Dresses" com categoria superior "Women"
 	    Então devo conferir se sub categoria "SUMMER DRESSES " foi apresentada
 	
 	@Teste04
     Cenário: CT0004 Adicionar Produtos no Carrinho
 	    Dado que eu acesse a página home do site
-	    E digitar o nome do produto "t-shirt" no campo de pesquisa
+	    E digitar o nome do produto "T-shirts" no campo de pesquisa
 	    Quando clicar no botão pesquisar
-	    E clicar no botão Add to cart do produto
+	    E clicar no botão Add to cart do produto "T-shirts"
 	    E clicar no botão Proceed to checkout
-	    Então devo realizar as asserções referentes ao produto adicionado, que considere importante para a validação do cenário, na tela Shopping-cart sumary.
+	    Então valido que a descriacao do produto contem "T-shirts"
+	    E valido que a quantidade de produtos adicionados é igual a "1"
 	
 	@Teste05
     Cenário: CT0005 Adicionar Produtos no Carrinho

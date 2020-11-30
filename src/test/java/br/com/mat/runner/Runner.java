@@ -13,7 +13,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 @RunWith(Cucumber.class)
 @CucumberOptions(glue = {"br.com.mat.test", "br.com.mat.steps", "br.com.mat.utils"}, //
 		features = "src\\test\\resources\\features", //
-		tags = {"@Teste02"},
+		tags = {"@Teste05"},
 		plugin = { "pretty", "html:target/site/cucumber-pretty", "json:target/cucumber.json", "junit:target/cucumber.xml"},
 		monochrome = false)
 public class Runner extends AbstractTestNGCucumberTests {

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.itextpdf.text.DocumentException;
 
-import br.com.mat.steps.LoginSteps;
+import br.com.mat.steps.BuscasEValidacoesSteps;
 import br.com.mat.utils.Setup;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -17,7 +17,7 @@ public class FazerLoginTest extends Setup {
 	public static WebDriver driver;
 	
 	
-	public LoginSteps loginSteps = new LoginSteps();
+	public BuscasEValidacoesSteps loginSteps = new BuscasEValidacoesSteps();
 	
 	@Before
 	public void setupStart(Scenario scenario) throws IOException {

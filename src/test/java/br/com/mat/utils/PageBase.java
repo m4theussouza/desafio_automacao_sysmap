@@ -81,8 +81,9 @@ public class PageBase extends Setup {
 			}
 			
 		}
-			return false;
-		}
+		Assert.assertFalse("Elemento com seletor: ["+ seletor +"] não foi encontrado", elementos.size() > 0 );
+		return false;
+	}
 	
 	public WebElement pegarElementoWeb(TipoSeletor tipo, String seletor) throws InterruptedException {
 		
