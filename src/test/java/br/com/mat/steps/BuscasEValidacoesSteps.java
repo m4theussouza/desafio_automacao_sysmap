@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import br.com.mat.pages.HomePage;
 import br.com.mat.pages.LoginPage;
+import br.com.mat.pages.PopUpProductSuccessfullyAddedPage;
 import br.com.mat.pages.SearchPage;
 import br.com.mat.pages.ShoppingCartPage;
 import br.com.mat.pages.SummerDressesPage;
@@ -18,6 +19,7 @@ public class BuscasEValidacoesSteps {
 	 	SearchPage searchPage = new SearchPage();
 	 	SummerDressesPage summerDressesPage = new SummerDressesPage();
 	 	ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+	 	PopUpProductSuccessfullyAddedPage popUpProductSuccessfullyAddedPage = new PopUpProductSuccessfullyAddedPage();
 	 	
 	 	@Dado("que eu acesse a página home do site")
 	 	public void que_eu_acesse_a_página_home_do_site() throws InterruptedException, IOException {
@@ -62,14 +64,14 @@ public class BuscasEValidacoesSteps {
 	 	
 	 	@Quando("clicar no botão Add to cart do produto {string}")
 	 	public void clicar_no_botão_Add_to_cart_do_produto(String produto) throws InterruptedException, IOException {
-	 	    searchPage.clicarBotaoAddToCartDoProdutoProcurado(produto);
-	 	    searchPage.validarProdutoAdicionadoNoCarrinho();
+	 	   searchPage.clicarBotaoAddToCartDoProdutoProcurado(produto);
+	 	   popUpProductSuccessfullyAddedPage.validarProdutoAdicionadoNoCarrinho();
 	 	}
 
 	 	@Quando("clicar no botão Proceed to checkout")
 	 	public void clicar_no_botão_Proceed_to_checkout() throws InterruptedException, IOException {
-	 	   searchPage.clicarBotaoProceedToCheckout();
-	 	   shoppingCartPage.validarTelaShoppingCart();
+	 		popUpProductSuccessfullyAddedPage.clicarBotaoProceedToCheckout();
+	 		shoppingCartPage.validarTelaShoppingCart();
 	 	}
 
 	 	@Então("valido que a descriacao do produto contem {string}")
@@ -92,34 +94,37 @@ public class BuscasEValidacoesSteps {
 	 	    homePage.clicarAbaBestSellers();
 	 	}
 
-	 	@Quando("selecionar um item que tenha {int}% de desconto")
-	 	public void selecionar_um_item_que_tenha_de_desconto(Integer desconto) throws InterruptedException {
-	 	    homePage.clicarElementoComPorcentagemDeDesconto(desconto);
-	 	    System.out.println("Break");
+	 	@Quando("selecionar um item que tenha {string}% de desconto")
+	 	public void selecionar_um_item_que_tenha_de_desconto(String desconto) throws InterruptedException {
+	 	    popUpProductSuccessfullyAddedPage.pegarValorProdutoSemDesconto(desconto);
+	 		homePage.clicarElementoComPorcentagemDeDesconto(desconto);
 	 	}
 
-	 	@Quando("adicionar no carrinho")
-	 	public void adicionar_no_carrinho() {
-	 	    // Write code here that turns the phrase above into concrete actions
-	 	    throw new io.cucumber.java.PendingException();
+	 	@Quando("adicionar no carrinho que tenha {string}% de desconto")
+	 	public void adicionar_no_carrinho(String desconto) throws InterruptedException {
+	 	    homePage.adicionarItemNoCarrinho(desconto);
 	 	}
 
-	 	@Quando("validar os valores que são apresentados no pop-up Product successfully added to your shopping cart")
-	 	public void validar_os_valores_que_são_apresentados_no_pop_up_Product_successfully_added_to_your_shopping_cart() {
-	 	    // Write code here that turns the phrase above into concrete actions
-	 	    throw new io.cucumber.java.PendingException();
-	 	}
-
-	 	@Quando("clicar em Proceed to checkout")
-	 	public void clicar_em_Proceed_to_checkout() {
-	 	    // Write code here that turns the phrase above into concrete actions
-	 	    throw new io.cucumber.java.PendingException();
+	 	@Quando("validar os valores que são apresentados no pop-up Product successfully added to your shopping cart desconto {string}%")
+	 	public void validar_os_valores_que_são_apresentados_no_pop_up_Product_successfully_added_to_your_shopping_cart_desconto(String desconto) throws InterruptedException, IOException {
+	 		popUpProductSuccessfullyAddedPage.validarProdutoAdicionadoNoCarrinho();
+	 		popUpProductSuccessfullyAddedPage.validarDesconto5porcento(desconto);
 	 	}
 	 	
 	 	@Então("devo realizar as asserções referentes ao produto adicionado, que considere importante para a validação do cenário, na tela Shopping-cart sumary.")
 	 	public void devo_realizar_as_asserções_referentes_ao_produto_adicionado_que_considere_importante_para_a_validação_do_cenário_na_tela_Shopping_cart_sumary() {
 	 	    // Write code here that turns the phrase above into concrete actions
 	 	    throw new io.cucumber.java.PendingException();
+	 	}
+	 	
+	 	@Então("valido que o preco unitario possui {string}% de desconto")
+	 	public void valido_que_o_preco_unitario_possui_de_desconto(String desconto) throws InterruptedException, IOException {
+	 		shoppingCartPage.validarQueProdutoPossuiPorcentagemDeDesconto(desconto);
+	 	}
+
+	 	@Então("valido que o produto esta em estoque")
+	 	public void valido_que_o_produto_esta_em_estoque() throws InterruptedException, IOException {
+	 		shoppingCartPage.validarProdutoEmEstoque();
 	 	}
 }
 

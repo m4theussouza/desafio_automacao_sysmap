@@ -75,32 +75,31 @@ public class HomePage extends PageBase {
 		}
 	}
 
-	public void clicarElementoComPorcentagemDeDesconto(Integer desconto) throws InterruptedException {
-		String itemComDescontoXpath = "(//span[text()='-"+String.valueOf(desconto)+"%'])[1]";
-		String botaoAddToCartDescontoXpath = "(//span[text()='-"+String.valueOf(desconto)+"%'])[1]//..//..//..//..//a[@title='Add to cart']";
-		String labelProdutoComDescontoNomeXpath = "(//span[text()='-"+String.valueOf(desconto)+"%'])[1]//..//..//..//..//a[@class='product-name']";
-		
-		if( elementoExiste(TipoSeletor.XPATH, itemComDescontoXpath, Constantes.TIME_WAIT_ELEMENT_EXIST) ) {
-			WebElement itemComDesconto = pegarElementoWeb(TipoSeletor.XPATH, itemComDescontoXpath);
-			JavascriptExecutor js = (JavascriptExecutor) getDriver();
-			js.executeScript("arguments[0].scrollIntoView(true);", itemComDesconto);			
+		public void clicarElementoComPorcentagemDeDesconto(String desconto) throws InterruptedException {
+			String itemComDescontoXpath = "(//span[text()='-"+desconto+"%'])[1]";
+			String imgProdutoComDescontoNomeXpath = "(//span[text()='-"+String.valueOf(desconto)+"%'])[3]//..//..//..//..//img";
+			
+			if( elementoExiste(TipoSeletor.XPATH, itemComDescontoXpath, Constantes.TIME_WAIT_ELEMENT_EXIST) ) {
+				WebElement itemComDesconto = pegarElementoWeb(TipoSeletor.XPATH, itemComDescontoXpath);
+				JavascriptExecutor js = (JavascriptExecutor) getDriver();
+				js.executeScript("arguments[0].scrollIntoView(true);", itemComDesconto);			
+			}
+			
+			if( elementoExiste(TipoSeletor.XPATH, imgProdutoComDescontoNomeXpath, Constantes.TIME_WAIT_ELEMENT_EXIST) ) {
+				WebElement labelProdutoComDescontoNome = pegarElementoWeb(TipoSeletor.XPATH, imgProdutoComDescontoNomeXpath);
+				Actions action = new Actions(getDriver());
+				action.moveToElement(labelProdutoComDescontoNome).perform();			
+			}
 		}
 		
-		if( elementoExiste(TipoSeletor.XPATH, labelProdutoComDescontoNomeXpath, Constantes.TIME_WAIT_ELEMENT_EXIST) ) {
-			WebElement labelProdutoComDescontoNome = pegarElementoWeb(TipoSeletor.XPATH, labelProdutoComDescontoNomeXpath);
-			Actions action = new Actions(getDriver());
-			action.moveToElement(labelProdutoComDescontoNome).perform();			
+		public void adicionarItemNoCarrinho(String desconto) throws InterruptedException {
+			String botaoAddToCartDescontoXpath = "(//span[text()='-"+desconto+"%'])[3]//..//..//..//..//a[@title='Add to cart']";
+			if( elementoExiste(TipoSeletor.XPATH, botaoAddToCartDescontoXpath, Constantes.TIME_WAIT_ELEMENT_EXIST) ) {
+				WebElement botaoAddToCartDesconto = pegarElementoWeb(TipoSeletor.XPATH, botaoAddToCartDescontoXpath);
+				botaoAddToCartDesconto.click();
+				System.out.println("Break");
+			}
 		}
 		
-		System.out.println("break");
-		
-		if( elementoExiste(TipoSeletor.XPATH, botaoAddToCartDescontoXpath, Constantes.TIME_WAIT_ELEMENT_EXIST) ) {
-			WebElement botaoAddToCartDesconto = pegarElementoWeb(TipoSeletor.XPATH, botaoAddToCartDescontoXpath);
-			botaoAddToCartDesconto.click();
-			System.out.println("Break");
-		}
-		
-		
-	}
-
 }
+

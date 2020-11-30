@@ -11,8 +11,7 @@ import br.com.mat.utils.PageBase;
 public class SearchPage extends PageBase {
 	
 	String alertProdutoNaoExistenteXpath = "//p[contains(text(),'No results were found for your search') and contains(text(), 'ProdutoNãoExistente') ]";
-	String iconOkClassName = "icon-ok";
-	String botaoProceedToCheckoutXpath = "//a[@title='Proceed to checkout']";
+	
 	
 	public void conferirResultadoDaBusca(String produto) throws InterruptedException, IOException {
 		String produtoXpath = "//a[@title='"+ produto +"' and @class='product-name']";
@@ -51,18 +50,5 @@ public class SearchPage extends PageBase {
 		}
 	}
 	
-	public void validarProdutoAdicionadoNoCarrinho() throws InterruptedException, IOException {
-		Thread.sleep(1000);
-		assertTrue(Constantes.TIRAR_PRINT, "Validando Item Adicionado No Carrinho", elementoExiste(TipoSeletor.CLASSNAME, 
-																									iconOkClassName, 
-																									Constantes.TIME_WAIT_ELEMENT_EXIST));
-	}
-	
-	public void clicarBotaoProceedToCheckout() throws InterruptedException {
-		if( elementoExiste(TipoSeletor.XPATH, botaoProceedToCheckoutXpath, Constantes.TIME_WAIT_ELEMENT_EXIST) ) {
-			WebElement botaoProceedToCheckout = pegarElementoWeb(TipoSeletor.XPATH, botaoProceedToCheckoutXpath);
-			botaoProceedToCheckout.click();
-		}
-	}
 	//a[@title='Add to cart']
 }

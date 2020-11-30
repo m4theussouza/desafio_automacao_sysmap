@@ -36,9 +36,10 @@ Funcionalidade: Buscas e Validacoes Site de Compras
 	    Dado que eu acesse a página home do site
 	    E dar um scroll até a aba Best Sellers
 	    Quando clicar na aba Best Sellers
-	    E selecionar um item que tenha 5% de desconto
-	    E adicionar no carrinho
-	    E validar os valores que são apresentados no pop-up Product successfully added to your shopping cart
-	    E clicar em Proceed to checkout
-	    Então devo realizar as asserções referentes ao produto adicionado, que considere importante para a validação do cenário, na tela Shopping-cart sumary.
-
+	    E selecionar um item que tenha "5"% de desconto
+	    E adicionar no carrinho que tenha "5"% de desconto
+	    E validar os valores que são apresentados no pop-up Product successfully added to your shopping cart desconto "5"%
+	    E clicar no botão Proceed to checkout
+	    Então valido que a quantidade de produtos adicionados é igual a "1"
+		Então valido que o preco unitario possui "5"% de desconto
+		Então valido que o produto esta em estoque
