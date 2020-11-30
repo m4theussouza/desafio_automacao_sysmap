@@ -1,7 +1,7 @@
 
-# Projeto Teste Login SwagLab
+# Projeto Desafio Sysmap
 
-Desafio para fazer login com alguns usuarios do SwagLab.
+Desafio para realizar buscas e validações no site automationpractice
 
 ## Preparação do ambiente
 
