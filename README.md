@@ -18,7 +18,7 @@ Desafio para realizar buscas e validações no site automationpractice
     - Navegue até a pasta onde deseja deixar o projeto;
     - Clique com o botão direito em uma parte em branco da pasta;
     - E selecione 'Git Bash Here' uma janela como a do cmd irá abrir;
-    - Coloque o seguinte comando no prompt sem as aspas ' git clone https://github.com/m4theussouza/portifolio_automacao_teste_java';
+    - Coloque o seguinte comando no prompt sem as aspas 'git clone https://github.com/m4theussouza/desafio_automacao_sysmap';
     - Pronto, os arquivos já estão no diretório.
     
 ## Arquivo start.properties
